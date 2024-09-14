@@ -51,7 +51,7 @@ app.listen(PORT, () => {
 
 const task = cron.schedule("*/10 * * * *", () => {
   fetch(
-    "https://zesty-redirector.onrender.com/redirect-url?previewUrl=https://lincoln-1-us-east1-01.preview.finalsitecdn.com/admin/fs"
+    "https://zesty-redirector.onrender.com/redirect-url?previewUrl=https://www.finalsite.com/admin/fs"
   )
     .then((resp) => resp.json())
     .then(() => console.log("Keeping it alive!"));
