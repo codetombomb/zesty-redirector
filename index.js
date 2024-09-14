@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
+const cron = require("node-cron");
 const cors = require("cors");
 const app = express();
 
@@ -47,3 +48,12 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Proxy server running on ${PORT}`);
 });
+
+const task = cron.schedule("*/10 * * * *", () => {
+  fetch(
+    "https://zesty-redirector.onrender.com/redirect-url?previewUrl=https://lincoln-1-us-east1-01.preview.finalsitecdn.com/admin/fs"
+  )
+    .then((resp) => resp.json())
+    .then(() => console.log("Keeping it alive!"));
+});
+task.start();
