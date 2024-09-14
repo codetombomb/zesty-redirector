@@ -7,6 +7,7 @@ const app = express();
 app.use(cors());
 
 app.get("/redirect-url", async (req, res) => {
+  console.log("Received request with query:", req.query);
   const previewUrl = req.query.previewUrl;
 
   try {
